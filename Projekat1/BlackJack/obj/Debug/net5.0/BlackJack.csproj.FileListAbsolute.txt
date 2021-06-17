@@ -1,0 +1,7 @@
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.csprojAssemblyReference.cache
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.GeneratedMSBuildEditorConfig.editorconfig
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.AssemblyInfoInputs.cache
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.AssemblyInfo.cs
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.csproj.CoreCompileInputs.cache
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.MvcApplicationPartsAssemblyInfo.cs
+C:\-4thGrade-\SOA\Projekat1\BlackJack\obj\Debug\net5.0\BlackJack.MvcApplicationPartsAssemblyInfo.cache

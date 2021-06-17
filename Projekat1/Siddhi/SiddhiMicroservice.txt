@@ -1,0 +1,37 @@
+@App:name("SiddhiMicroservice")
+
+@Source(type = 'http',
+        receiver.url='http://0.0.0.0:8006/SiddhiMicroservice',
+        basic.auth.enabled='false',
+        @map(type='json'), @attributes(Type = "Type", Value = "Value", Timestamp = "Timestamp"))
+define stream DataInputStream 
+(
+    Type string,
+    Value int,
+    Timestamp string
+);
+@sink(type='http', publisher.url='http://192.168.1.200:6003/api/Analytics/Post',
+      method='POST', 
+      headers='Content-type:application/json',
+      basic.auth.enabled='false',
+      @map(type='json'))
+define stream OutputDataStream 
+(
+    Type string,
+    Value int,
+    Timestamp string
+);
+@info(name='Card1Played')
+from DataInputStream[Type=="card1" and Value>5]
+select Type, Value, Timestamp
+insert into OutputDataStream;
+
+@info(name='Card2Played')
+from DataInputStream[Type=="card2" and (Value>8 or Value<4)]
+select Type, Value, Timestamp
+insert into OutputDataStream;
+
+@info(name='Card3Played')
+from DataInputStream[Type=="card3" and Value<4]
+select Type, Value, Timestamp
+insert into OutputDataStream;

@@ -1,0 +1,1 @@
+docker run -it -p 8006:8006 -v "C:\-4thGrade-\SOA\Projekat1\Siddhi\SiddhiMicroservice.siddhi":/siddhi-runner/SiddhiMicroservice.siddhi siddhiio/siddhi-runner-alpine -Dapps=/siddhi-runner/SiddhiMicroservice.siddhi

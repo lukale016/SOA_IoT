@@ -1,0 +1,84 @@
+version: '3.3'
+services:
+  hivemq:
+    image: hivemq/hivemq4
+    container_name: hivemq
+    ports:
+     - "8080:8080"
+     - "1883:1883"
+  handoneandtwo:
+    image: handoneandtwoimg
+    build:
+        context: ./HandOneAndTwoMicroservice
+        dockerfile: Dockerfile
+    ports:
+      - "6000:80"
+    depends_on:
+         - mongodb
+    volumes:
+         - C:\-4thGrade-\SOA\:/Blackjack
+  handthree:
+    image: handthreeimg
+    build:
+        context: ./HandThreeMicroservice
+        dockerfile: Dockerfile
+    ports:
+      - "6001:80"
+    volumes:
+      - C:\-4thGrade-\SOA\:/Blackjack
+    depends_on: 
+      - mongodb
+  command:
+    image: commanddev
+    build:
+        context: ./CommandMicroService
+        dockerfile: Dockerfile
+    ports:
+      - "6002:80"
+    depends_on:
+      - hivemq
+  analytics:
+    image: analyticsimg
+    build:
+        context: ./AnalyticsMicroservice
+        dockerfile: Dockerfile
+    ports:
+      - "6003:80"
+    depends_on:
+      - hivemq
+      - mongodb
+    volumes: 
+      - mongodb:/data   
+  data:
+    image: data
+    build:
+        context: ./DataMicroservice
+        dockerfile: Dockerfile
+    ports:
+      - "6004:80"
+    depends_on:
+      - hivemq 
+      - mongodb
+    volumes:
+      - mongodb:/data 
+  mongodb:
+    image : mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    volumes:
+      - mongodb:/data   
+    depends_on: 
+       - hivemq  
+  gateway:
+     image: gatewaydev
+     build:
+       context: ./GatewayMicroservice
+       dockerfile: Dockerfile
+     ports:
+       - "6005:80"
+     depends_on: 
+       - command
+volumes:
+    mongodb:

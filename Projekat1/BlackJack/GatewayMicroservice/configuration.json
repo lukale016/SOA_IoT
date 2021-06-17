@@ -1,0 +1,127 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Data/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "data",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/data/{everything}",
+      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "SwaggerKey": "data"
+    },
+    {
+      "DownstreamPathTemplate": "/api/HandOneAndTwo/TurnOnOffSensor",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "handoneandtwo",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/handoneandtwo/TurnOnOffSensor",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "handoneandtwo"
+    },
+    {
+      "DownstreamPathTemplate": "/api/HandOneAndTwo/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "handoneandtwo",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/handoneandtwo/{everything}",
+      "UpstreamHttpMethod": [ "GET" , "Post"],
+      "SwaggerKey": "handoneandtwo"
+    },
+    {
+      "DownstreamPathTemplate": "/api/HandThree/TurnOnOffSensor/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hadnthree",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/handthree/TurnOnOffSensor/",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "handthree"
+    },
+    {
+      "DownstreamPathTemplate": "/api/HandTree/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "handthree",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/handthree/{everything}",
+      "UpstreamHttpMethod": [ "Get" , "Post"],
+      "SwaggerKey": "handthree"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Command/PostCommand" ,
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "command",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/comand/",
+      "UpstreamHttpMethod": [ "POST" ],
+      "SwaggerKey": "command"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "data",
+      "Config": [
+        {
+          "Name": "DataMicroservice",
+          "Version": "v1",
+          "Url": "http://192.168.1.200:6004/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "handoneandtwo",
+      "Config": [
+        {
+          "Name": "HandOneAndTwoMicroservice",
+          "Version": "v1",
+          "Url": "http://192.168.1.200:6000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "handthree",
+      "Config": [
+        {
+          "Name": "HandThreeMicroservice",
+          "Version": "v1",
+          "Url": "http://192.168.1.200:6001/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "command",
+      "Config": [
+        {
+          "Name": "CommandMicroservice",
+          "Version": "v1",
+          "Url": "http://192.168.1.200:6002/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://192.168.1.200:6005"
+  }
+}
