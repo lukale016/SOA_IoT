@@ -14,7 +14,7 @@
       "SwaggerKey": "data"
     },
     {
-      "DownstreamPathTemplate": "/api/HandOneAndTwo/TurnOnOffSensor",
+      "DownstreamPathTemplate": "/api/Sensor/TurnOnOffSensor",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -22,12 +22,12 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/gateway/handoneandtwo/TurnOnOffSensor",
+      "UpstreamPathTemplate": "/gateway/sensor/TurnOnOffSensor",
       "UpstreamHttpMethod": [ "POST" ],
       "SwaggerKey": "handoneandtwo"
     },
     {
-      "DownstreamPathTemplate": "/api/HandOneAndTwo/{everything}",
+      "DownstreamPathTemplate": "/api/sensor/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -35,12 +35,12 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/gateway/handoneandtwo/{everything}",
+      "UpstreamPathTemplate": "/gateway/sensor/{everything}",
       "UpstreamHttpMethod": [ "GET" , "Post"],
       "SwaggerKey": "handoneandtwo"
     },
     {
-      "DownstreamPathTemplate": "/api/HandThree/TurnOnOffSensor/",
+      "DownstreamPathTemplate": "/api/sensor/TurnOnOffSensor/",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -48,12 +48,12 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/gateway/handthree/TurnOnOffSensor/",
+      "UpstreamPathTemplate": "/gateway/sensor/TurnOnOffSensor/",
       "UpstreamHttpMethod": [ "POST" ],
       "SwaggerKey": "handthree"
     },
     {
-      "DownstreamPathTemplate": "/api/HandTree/{everything}",
+      "DownstreamPathTemplate": "/api/sensor/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -61,7 +61,7 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/gateway/handthree/{everything}",
+      "UpstreamPathTemplate": "/gateway/sensor/{everything}",
       "UpstreamHttpMethod": [ "Get" , "Post"],
       "SwaggerKey": "handthree"
     },
