@@ -1,0 +1,18 @@
+<div class="container card text-white" id="main-sensor-card">
+    <div class="row divTopRow">
+        <p class="col-3">{{this.title}}</p>
+
+        <div class="divButtons">
+            <div class="col-2">
+                <button *ngIf="!this.started" class="btn btn-success" (click)="this.started=true">start</button>
+                <button *ngIf="this.started" class="btn btn-danger" (click)="this.started=false">stop</button>
+            </div>
+        </div>
+    </div>
+    <div class="row col-6">
+        <div class="chart">
+            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+            <app-chart numValues={{this.numValues}}></app-chart>
+        </div>
+    </div>
+</div>

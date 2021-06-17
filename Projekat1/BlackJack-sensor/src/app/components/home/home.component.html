@@ -1,0 +1,30 @@
+<div class="divHome text-white" id="main-home-card">
+    <div class="row divDashboard text-white">
+        <label class="labelDashboard">DASHBOARD</label>
+        <img src="../../../assets/2x/outline_format_list_bulleted_black_24dp.png" (click)="showNotifications()" class="imgNotifications"/>
+    </div>
+    <div *ngIf="showDivNotifications" class="divNotifications">
+        <p>divNotification</p>
+        <ul>
+            <li *ngFor="let msg of warnings">
+                {{msg}}
+            </li>
+        </ul>
+    </div>
+    <div class="">
+        <div class="row">
+            <!-- <div class="col-3 divMenu">
+                <app-menu></app-menu>
+            </div> -->
+            <div class="col-11 divSensor">
+                <app-sensor class="col-11" title="water sensor" numValues=2></app-sensor>        
+            </div>
+            <div class="col-11 divSensor">
+                <app-sensor title="oil sensor" numValues=1></app-sensor>        
+            </div>
+            <!-- <div class="col-11 divSensor">
+                <app-sensor title="fire sensor"></app-sensor>        
+            </div> -->
+        </div>
+    </div>
+</div>

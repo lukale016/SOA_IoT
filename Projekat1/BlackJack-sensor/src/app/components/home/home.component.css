@@ -1,0 +1,56 @@
+#main-home-card {
+    background-color: #2a2a2a;   
+}
+
+.divHome{
+    border: 5px solid red;
+   
+    width: 95%;
+    padding: 5px;
+    position: absolute;
+    left: 2%;
+    top: 0%;
+}
+
+.divDashboard{
+    position: relative;
+    border: 5px solid blue;
+    left: 2%;
+    width: 98%;
+}
+
+.labelDashboard{
+    margin: 10px;
+    font-size: large;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.divMenu{
+    margin-top: 20px;    
+    left: 2%;
+}
+
+.divSensor{
+    margin-top: 40px;
+    left: 2%;
+}
+
+.divNotifications{
+    position: absolute;
+    left:50%;
+    z-index: 10;
+    margin-top: 10px;
+    margin-right: 15px;
+    background-color:sienna;
+    width: 50%;
+    border: solid 2px black;
+    overflow-y: scroll;
+}
+
+.imgNotifications{
+    position: absolute;
+    right: 1%;
+    width: 50px;
+    height: 50px;
+}
