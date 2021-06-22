@@ -45,6 +45,8 @@ namespace CommandMicroservice
                 });
             });
 
+            services.AddSignalR();
+
             Hivemq mqtt = new Hivemq();
             services.AddSingleton(mqtt);
             services.AddScoped<ISensorRepository, SensorRepository>();
@@ -62,6 +64,8 @@ namespace CommandMicroservice
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CommandMicroservice v1"));
+
+            app.UseWebSockets();
 
             app.UseHttpsRedirection();
 
