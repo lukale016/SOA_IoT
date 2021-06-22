@@ -16,32 +16,36 @@ import { DataHubService } from '../cardhand-hub/data-hub.service';
 })
 export class ChartdataService {
 
-  public chartData1 : Observable<Array<number>>  = of([1,2,3,4,5,6,7,8,9,10]);
-  public chartData2 : Observable<Array<number>>  = of([1,2,3,4,5,6,7,8,9,10]);
-  public chartData3 : Observable<Array<number>>  = of([1,2,3,4,5,6,7,8,9,10]);
+  public chartData1 : Observable<Array<number>>; 
+  public chartData2 : Array<number>; 
+  public chartData3 : Observable<Array<number>>;
   constructor(
     private router: Router,
     private http: HttpClient,
-    private cardDataService : DataHubService,
+    private cardDataHubService : DataHubService,
     
   ) { 
-    this.cardDataService.beginConnection();
-    this.chartData1 = of(this.cardDataService.cardHand1);
-    this.chartData2 = of(this.cardDataService.cardHand2);
-    this.chartData3 = of(this.cardDataService.cardHand3);
+    // this.cardDataHubService.beginConnection();
+
+    // this.chartData1 = of(this.cardDataHubService.cardHand1);
+    // this.chartData1.subscribe((data)=>{
+    //   console.log("chartdataservice chartdata1 received this",data);
+    // });
+    // this.chartData2 = this.cardDataHubService.cardHand2;
+    // this.chartData3 = of(this.cardDataHubService.cardHand3);
   }
 
-    loadData() : Observable<Array<number>> {
+    loadData() {//: Observable<Array<number>> {
       try{
-      const data : Observable<Array<number>> = this.http.get<Array<number>>(`${environment}/getData`,{headers:{
+      // const data : Observable<Array<number>> = this.http.get<Array<number>>(`${environment}/getData`,{headers:{
 
-      }}).pipe(retry(1),catchError(this.handleError))
+      // }}).pipe(retry(1),catchError(this.handleError))
 
-      data.subscribe((numbers : number[]) =>{
-        this.chartData1 = of(numbers);
-      })
+      // data.subscribe((numbers : number[]) =>{
+      //   this.chartData1 = of(numbers);
+      // })
     
-      return data;
+      // return data;
       }
       catch(error)
       {

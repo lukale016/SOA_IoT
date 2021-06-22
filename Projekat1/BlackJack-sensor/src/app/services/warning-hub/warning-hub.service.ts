@@ -17,7 +17,7 @@ export class WarningHubService {
 
   beginConnection() {
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(`http://localhost:${port}/hub/data`, {
+      .withUrl(`/hub/data`, {
         transport: signalR.HttpTransportType.ServerSentEvents,
       })
       .configureLogging(signalR.LogLevel.Debug)
@@ -42,7 +42,7 @@ export class WarningHubService {
     start();
 
     this.connection.on(
-      'receivedData',
+      "receivedData",
       (type: string, message: string) => {
         console.log('warning hub came with params:', type, message);
         if (type === "card1" || type === "card2") {

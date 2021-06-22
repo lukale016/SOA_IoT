@@ -1,0 +1,10 @@
+{
+    "/hub/*": {
+      "target": "http://192.168.1.200:6004",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+   
+  }
+  

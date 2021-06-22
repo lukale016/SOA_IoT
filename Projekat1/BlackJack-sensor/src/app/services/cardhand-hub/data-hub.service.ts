@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { merge, Observable, of } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
 import { environment } from 'src/environments/environment';
 import * as internal from 'stream';
+import { MapOperator } from 'rxjs/internal/operators/map';
+import { mergeAll, tap } from 'rxjs/operators';
 
 let port = 6002;
 
@@ -19,7 +21,7 @@ export class DataHubService {
 
   beginConnection() {
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(`http://localhost:${port}/hub/data`, {
+      .withUrl(`/hub/data`, {
         transport: signalR.HttpTransportType.ServerSentEvents,
       })
       .configureLogging(signalR.LogLevel.Debug)
@@ -44,16 +46,19 @@ export class DataHubService {
     start();
 
     this.connection.on(
-      'sendData',
+      "sendData",
       (type: string, value: number, timestamp: string) => {
         console.log('data came with params:', type, value, timestamp);
         if (type === "card1") {
           this.cardHand1.push(value);
+          console.log('this.cardhand1:', this.cardHand1);
         } else if (type === "card2") {
           this.cardHand2.push(value);
+          console.log('this.cardhand2:', this.cardHand2);
         }
         else if (type === "card3"){
           this.cardHand3.push(value);
+          console.log('this.cardhand3:', this.cardHand3);
         }
       }
     );
