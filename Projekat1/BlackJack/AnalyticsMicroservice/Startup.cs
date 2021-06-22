@@ -42,6 +42,8 @@ namespace AnalyticsMicroservice
                 });
             });
 
+            services.AddSignalR();
+
             Hivemq mqtt = new Hivemq();
             services.AddSingleton(mqtt);
             services.AddScoped<ISensorRepository, SensorRepository>();
@@ -55,13 +57,16 @@ namespace AnalyticsMicroservice
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AnalyticsMicroservice v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AnalyticsMicroservice v1"));
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseWebSockets();
 
             app.UseCors("SOAPolicy");
 

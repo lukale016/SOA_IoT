@@ -28,27 +28,27 @@ services:
       - C:\-4thGrade-\SOA\:/Blackjack
     depends_on: 
       - mongodb
-  command:
-    image: commanddev
-    build:
-        context: ./CommandMicroService
-        dockerfile: Dockerfile
-    ports:
-      - "6002:80"
-    depends_on:
-      - hivemq
-  analytics:
-    image: analyticsimg
-    build:
-        context: ./AnalyticsMicroservice
-        dockerfile: Dockerfile
-    ports:
-      - "6003:80"
-    depends_on:
-      - hivemq
-      - mongodb
-    volumes: 
-      - mongodb:/data   
+#  command:
+ #   image: commanddev
+  #  build:
+   #     context: ./CommandMicroService
+    #    dockerfile: Dockerfile
+    #ports:
+     # - "6002:80"
+    #depends_on:
+     # - hivemq
+  #analytics:
+   # image: analyticsimg
+    #build:
+     #   context: ./AnalyticsMicroservice
+      #  dockerfile: Dockerfile
+    #ports:
+     # - "6003:80"
+   # depends_on:
+    #  - hivemq
+     # - mongodb
+   # volumes: 
+    #  - mongodb:/data   
   data:
     image: data
     build:
@@ -71,14 +71,14 @@ services:
       - mongodb:/data   
     depends_on: 
        - hivemq  
-  gateway:
-     image: gatewaydev
-     build:
-       context: ./GatewayMicroservice
-       dockerfile: Dockerfile
-     ports:
-       - "6005:80"
-     depends_on: 
-       - command
+  #gateway:
+   #  image: gatewaydev
+    # build:
+     #  context: ./GatewayMicroservice
+      # dockerfile: Dockerfile
+ #    ports:
+  #     - "6005:80"
+   #  depends_on: 
+    #   - command
 volumes:
     mongodb:

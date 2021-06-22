@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataMicroservice.Hubs;
 using DataMicroservice.Models;
 using DataMicroservice.Repository;
 using DataMicroservice.Services;
@@ -41,7 +42,11 @@ namespace DataMicroservice
                     option.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
+
+            services.AddSingleton<DataHub>(new DataHub());
             
+            services.AddSignalR();
+
             Hivemq mqtt = new Hivemq();
             services.AddSingleton(mqtt);
             services.AddScoped<ISensorRepository, SensorRepository>();
@@ -55,13 +60,16 @@ namespace DataMicroservice
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DataMicroservice v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DataMicroservice v1"));
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseWebSockets();
 
             app.UseCors("SOAPolicy");
 
@@ -70,6 +78,7 @@ namespace DataMicroservice
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<DataHub>("hub/Data");
             });
         }
     }

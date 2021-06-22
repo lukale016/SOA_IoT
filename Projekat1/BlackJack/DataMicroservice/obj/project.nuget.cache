@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "58qbcw6LSkh/3gG69IlwzSxFRV1IPfWTdRS8vZSZUg2Z9aBV+tlG+qMWTJ9DCeHhDqSfSUjgzupROPHVaR+eSw==",
+  "dgSpecHash": "kOM2BfntjSFXrEHXKObqjY+B4ysWDbE2B0w3BKDumbeYlKWckj7O+eM7pxJJI43H0zGQJYHf6v4uHSFZA1H/oA==",
   "success": true,
-  "projectFilePath": "c:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj",
+  "projectFilePath": "C:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luka\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",
     "C:\\Users\\Luka\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",

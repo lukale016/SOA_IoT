@@ -83,13 +83,14 @@ namespace HandOneAndTwoMicroservice.Controllers
             {
                 _serviceHandOne.SensorOff();
                 _serviceHandTwo.SensorOff();
+                return Ok("Turned off ");
             }
             else
             {
                 _serviceHandOne.SensorOn();
                 _serviceHandTwo.SensorOn();
+                return Ok("Turned on");
             }
-            return Ok();
         }
 
         [HttpPost("{type}")]

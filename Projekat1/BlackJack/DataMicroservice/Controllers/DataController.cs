@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataMicroservice.Hubs;
 using DataMicroservice.Models;
 using DataMicroservice.Repository;
 using Microsoft.AspNetCore.Cors;
@@ -16,15 +17,19 @@ namespace DataMicroservice.Controllers
     public class DataController : ControllerBase
     {
         public ISensorRepository _dataRepository;
-        public DataController(ISensorRepository dataRepository)
+
+        private DataHub _hub;
+        public DataController(ISensorRepository dataRepository, DataHub hub)
         {
             _dataRepository = dataRepository;
+            _hub = hub;
         }
         
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] Sensor sensor)
         {
-            Console.WriteLine("Pristigli si podaci " + sensor.Type + " " + sensor.Value);
+            Console.WriteLine("Pristigli su podaci " + sensor.Type + " " + sensor.Value + " " + sensor.Timestamp);
+            await _hub.SendData(sensor.Type, sensor.Value, sensor.Timestamp);
             await _dataRepository.PostData(sensor);
             return Ok();
         }

@@ -58,7 +58,7 @@ namespace HandThreeMicroservice.Services
         {
             IsOn = true;
             _timer.Start();
-    }       
+        }       
 
         private async void OnTimerEvent(object sender, ElapsedEventArgs args)
         {

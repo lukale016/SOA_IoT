@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CommandMicroservice.Hubs;
 using CommandMicroservice.Models;
 using CommandMicroservice.Repository;
 using CommandMicroservice.Services;
@@ -36,7 +37,14 @@ namespace CommandMicroservice
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CommandMicroservice", Version = "v1" });
             });
 
+            services.AddSingleton<DataHub>(new DataHub());
             
+            services.AddCors(options =>{
+                options.AddPolicy("SOAPolicy", option =>{
+                    option.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
+
             Hivemq mqtt = new Hivemq();
             services.AddSingleton(mqtt);
             services.AddScoped<ISensorRepository, SensorRepository>();
@@ -59,11 +67,14 @@ namespace CommandMicroservice
 
             app.UseRouting();
 
+            app.UseCors("SOAPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<DataHub>("hub/Data");
             });
         }
     }

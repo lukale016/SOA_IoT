@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj": {}
+    "C:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj": {}
   },
   "projects": {
-    "c:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj": {
+    "C:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj",
+        "projectUniqueName": "C:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj",
         "projectName": "DataMicroservice",
-        "projectPath": "c:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj",
+        "projectPath": "C:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\DataMicroservice.csproj",
         "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
-        "outputPath": "c:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\obj\\",
+        "outputPath": "C:\\-4thGrade-\\SOA\\Projekat1\\BlackJack\\DataMicroservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Luka\\AppData\\Roaming\\NuGet\\NuGet.Config",
