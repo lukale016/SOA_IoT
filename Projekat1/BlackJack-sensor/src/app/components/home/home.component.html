@@ -1,10 +1,9 @@
-<div class="divHome text-white" id="main-home-card">
-    <div class="row divDashboard text-white">
+<div class="divHome card text-white" id="main-home-card">
+    <div class="row card text-black divDashboard">
         <label class="labelDashboard">DASHBOARD</label>
         <img src="../../../assets/2x/outline_format_list_bulleted_black_24dp.png" (click)="showNotifications()" class="imgNotifications"/>
     </div>
     <div *ngIf="showDivNotifications" class="divNotifications">
-        <p>divNotification</p>
         <ul>
             <li *ngFor="let msg of warnings">
                 {{msg}}
@@ -17,10 +16,10 @@
                 <app-menu></app-menu>
             </div> -->
             <div class="col-11 divSensor">
-                <app-sensor class="col-11" title="HandOneAndTwo sensor" numValues=2></app-sensor>        
+                <app-sensor class="col-11" title="HandOneAndTwo sensor" isChart="true"></app-sensor>        
             </div>
             <div class="col-11 divSensor">
-                <app-sensor title="HandThree sensor" numValues=1></app-sensor>        
+                <app-sensor class="col-11" title="HandThree sensor" isChart="false"></app-sensor>        
             </div>
             <!-- <div class="col-11 divSensor">
                 <app-sensor title="fire sensor"></app-sensor>        

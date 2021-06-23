@@ -4,15 +4,17 @@
 
         <div class="divButtons">
             <div class="col-2">
-                <button *ngIf="!this.started" class="btn btn-success" (click)="this.started=true">start</button>
-                <button *ngIf="this.started" class="btn btn-danger" (click)="this.started=false">stop</button>
+                <button *ngIf="!this.started" class="btn btn-success" (click)="btnClicked()">start</button>
+                <button *ngIf="this.started" class="btn btn-danger" (click)="btnClicked()">stop</button>
             </div>
         </div>
     </div>
     <div class="row col-6">
         <div class="chart">
             <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-            <app-chart title={{this.title}} numValues={{this.numValues}}></app-chart>
+            <app-chart *ngIf="this.title=='HandOneAndTwo sensor'" title={{this.title}}></app-chart>
+            <app-line *ngIf="this.title=='HandThree sensor'" title={{this.title}}></app-line>
         </div>
+        <!-- <app-line *ngIf="!this.isChart" title={{this.title}}></app-line> -->
     </div>
 </div>

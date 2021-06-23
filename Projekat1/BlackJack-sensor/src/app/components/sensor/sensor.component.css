@@ -3,7 +3,10 @@
 }
 
 .container{
-    border: 5px solid red;
+    margin: 10px;
+    border: grey 3px solid;
+    left: 20%;
+    max-width: 50%;
 }
 
 .divTopRow{

@@ -17,8 +17,12 @@ export class WarningHubService {
 
   beginConnection() {
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(`/hub/data`, {
-        transport: signalR.HttpTransportType.ServerSentEvents,
+      .withUrl(`http://localhost:${port}/hub/data`, {
+        skipNegotiation:true,
+        headers: {
+          'Access-Control-Allow-Origin':'*',
+        },
+        transport: signalR.HttpTransportType.WebSockets,
       })
       .configureLogging(signalR.LogLevel.Debug)
       .build();

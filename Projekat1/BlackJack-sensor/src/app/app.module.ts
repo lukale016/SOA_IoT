@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartComponent } from './components/chart/chart.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
+import { LineComponent } from './components/line/line.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SensorComponent,
     MenuComponent,
-    ChartComponent
+    ChartComponent,
+    LineComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     MDBBootstrapModule.forRoot(),
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

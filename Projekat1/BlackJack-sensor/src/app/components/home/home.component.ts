@@ -10,13 +10,14 @@ import { WarningHubService } from 'src/app/services/warning-hub/warning-hub.serv
 export class HomeComponent implements OnInit {
 
   public showDivNotifications : boolean = false;
-  private messages : Observable<Array<string>> ;
+  private $messages : Observable<Array<string>> ;
   public warnings : Array<string> = ["no", "current", "warnings", "to", "display"];
   constructor(private warningHubService : WarningHubService) {
     this.warningHubService.beginConnection();
-    this.messages = of(this.warningHubService.messages);
-    this.messages.subscribe((data :Array<string>) =>{
-       this.warnings = data; 
+    this.$messages = of(this.warningHubService.messages);
+    this.$messages.subscribe((data :Array<string>) =>{
+       this.warnings = data;
+       console.log("warnings subbed to:",data,this.warnings); 
     })
    }
 

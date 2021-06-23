@@ -44,58 +44,55 @@ export class ChartComponent {
         'this.chartDatasets[0].data',
         this.chartDatasets[0].data
       );
-      if(this.title==="HandOneAndTwo sensor")
-        this.chartDatasets[0].data = this.arrayValues1;
     });
     this.$arrayValue2.subscribe((numbers) => {
       this.arrayValues2 = numbers;
       console.log('$2', this.arrayValues2, numbers);
-      if(this.chartDatasets[1])
-        this.chartDatasets[1].data = this.arrayValues2;
+      this.chartDatasets[1].data = this.arrayValues2;
     });
     this.$arrayValue3.subscribe((numbers) => {
       this.arrayValues3 = numbers;
-      console.log('$3', this.arrayValues2, numbers);
-      if(this.title==="HandThree sensor")
-        this.chartDatasets[0].data = this.arrayValues3;
+      console.log('$3', this.arrayValues3, numbers);
+      this.chartDatasets[0].data = this.arrayValues3;
     });
   }, 10000);
-    this.function();
+    // this.function();
 
   }
 
   public chartDatasets: Array<any> = [
-    { data: this.arrayValues1, label: 'My First hand' },
+    { data: this.arrayValues1, label: 'My First hand' }, // data: this.arrayValues;
+    { data: this.arrayValues2, label: 'My Second hand' }
   ];
 
-  public function = () => {
+  // public function = () => {
 
-      if (this.title === "HandThree sensor") {
-        this.chartDatasets = [
-          { data: this.arrayValues3, label: 'My Third hand' },
-        ];
-        console.log(
-          'FUNCTION handThree WORKING ITS MAGIC',
-          this.chartDatasets,
-          this.chartDatasets[0].data);
-      } else if(this.title === "HandOneAndTwo sensor"){
-        if(this.chartDatasets.length<2)
-          this.chartDatasets.push({data:this.arrayValues2, label:"My Second Hand"});
-        this.chartDatasets = [
-          { data: this.arrayValues1, label: 'My First hand' }, // data: this.arrayValues;
-          { data: this.arrayValues2, label: 'My Second hand' },
-        ];
-        console.log(
-          'FUNCTION hand1and2 WORKING ITS MAGIC',
-          this.chartDatasets,
-          this.chartDatasets[0].data,
-          this.chartDatasets[1].data
-        );
-      }
-    setTimeout(() => {
-      this.function();
-    }, 5000);
-  };
+  //     if (this.title === "HandThree sensor") {
+  //       this.chartDatasets = [
+  //         { data: this.arrayValues3, label: 'My Third hand' },
+  //       ];
+  //       // console.log(
+  //       //   'FUNCTION handThree WORKING ITS MAGIC',
+  //       //   this.chartDatasets,
+  //       //   this.chartDatasets[0].data);
+  //     } else if(this.title === "HandOneAndTwo sensor"){
+  //       if(this.chartDatasets.length<2)
+  //         this.chartDatasets.push({data:this.arrayValues2, label:"My Second Hand"});
+  //       this.chartDatasets = [
+  //         { data: this.arrayValues1, label: 'My First hand' }, // data: this.arrayValues;
+  //         { data: this.arrayValues2, label: 'My Second hand' },
+  //       ];
+  //       // console.log(
+  //       //   'FUNCTION hand1and2 WORKING ITS MAGIC',
+  //       //   this.chartDatasets,
+  //       //   this.chartDatasets[0].data,
+  //       //   this.chartDatasets[1].data
+  //       // );
+  //     }
+  //   setTimeout(() => {
+  //     this.function();
+  //   }, 5000);
+  // };
   public chartLabels: Array<any> = ['timeline', '1', '3', '5', '8', '11', '14'];
 
   public chartColors: Array<any> = [

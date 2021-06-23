@@ -6,7 +6,7 @@ import * as internal from 'stream';
 import { MapOperator } from 'rxjs/internal/operators/map';
 import { mergeAll, tap } from 'rxjs/operators';
 
-let port = 6002;
+let port = 6004;
 
 
 @Injectable({
@@ -21,8 +21,12 @@ export class DataHubService {
 
   beginConnection() {
     this.connection = new signalR.HubConnectionBuilder()
-      .withUrl(`/hub/data`, {
-        transport: signalR.HttpTransportType.ServerSentEvents,
+      .withUrl(`http://localhost:${port}/hub/data`, {
+        skipNegotiation:true,
+        headers: {
+          'Access-Control-Allow-Origin':'*',
+          },
+        transport: signalR.HttpTransportType.WebSockets,
       })
       .configureLogging(signalR.LogLevel.Debug)
       .build();
@@ -48,17 +52,17 @@ export class DataHubService {
     this.connection.on(
       "sendData",
       (type: string, value: number, timestamp: string) => {
-        console.log('data came with params:', type, value, timestamp);
+        // console.log('data came with params:', type, value, timestamp);
         if (type === "card1") {
           this.cardHand1.push(value);
-          console.log('this.cardhand1:', this.cardHand1);
+          // console.log('this.cardhand1:', this.cardHand1);
         } else if (type === "card2") {
           this.cardHand2.push(value);
-          console.log('this.cardhand2:', this.cardHand2);
+          // console.log('this.cardhand2:', this.cardHand2);
         }
         else if (type === "card3"){
           this.cardHand3.push(value);
-          console.log('this.cardhand3:', this.cardHand3);
+          // console.log('this.cardhand3:', this.cardHand3);
         }
       }
     );
