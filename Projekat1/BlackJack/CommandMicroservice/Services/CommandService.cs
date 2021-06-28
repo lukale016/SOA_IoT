@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using CommandMicroservice.Hubs;
 using CommandMicroservice.Models;
 using CommandMicroservice.Repository;
 using MQTTnet;
@@ -13,11 +14,13 @@ namespace CommandMicroservice.Services
     {
         private Hivemq _mqttService;
         private event EventHandler ServiceCreated;
-        public CommandService(Hivemq mqttService)
+        private DataHub _hub;
+        public CommandService(Hivemq mqttService, DataHub hub)
         {
             _mqttService = mqttService;
             ServiceCreated += OnServiceCreated;
             ServiceCreated?.Invoke(this, EventArgs.Empty);
+            _hub = hub;
         }
         private async void OnServiceCreated(object sender, EventArgs args)
         {
@@ -52,10 +55,15 @@ namespace CommandMicroservice.Services
             HttpClient httpClient = new HttpClient();
             if (sensorData.Type == "card3")
             {
+                await _hub.SendWarning(sensorData.Type, "Warning: Possible bust");
                 var responseMessage = await httpClient.PostAsJsonAsync("http://HandThree/api/Data/PostStop", sensorData);
             }
             else if (sensorData.Type == "card1" || sensorData.Type == "card2")
             {
+                if(sensorData.Type == "card1")
+                    await _hub.SendWarning(sensorData.Type, "Warning: Mediocre start.");
+                if(sensorData.Type == "card2")
+                    await _hub.SendWarning(sensorData.Type, "If card1 was not mediocre you have, a great hand.");
                 var responseMessage = await httpClient.PostAsJsonAsync("http://HandOneAndTwo/api/Data/PostStop", sensorData);
             }
             

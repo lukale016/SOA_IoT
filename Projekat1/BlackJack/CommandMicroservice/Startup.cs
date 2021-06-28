@@ -37,7 +37,8 @@ namespace CommandMicroservice
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CommandMicroservice", Version = "v1" });
             });
 
-            services.AddSingleton<DataHub>(new DataHub());
+            DataHub hub = new DataHub();
+            services.AddSingleton<DataHub>(hub);
             
             services.AddCors(options =>{
                 options.AddPolicy("SOAPolicy", option =>{
@@ -50,7 +51,7 @@ namespace CommandMicroservice
             Hivemq mqtt = new Hivemq();
             services.AddSingleton(mqtt);
             services.AddScoped<ISensorRepository, SensorRepository>();
-            services.AddSingleton(new CommandService(mqtt));
+            services.AddSingleton(new CommandService(mqtt, hub));
             services.AddScoped<SensorContext, SensorContext>();
         }
 
